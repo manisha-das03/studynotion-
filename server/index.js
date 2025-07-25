@@ -16,11 +16,13 @@ const dotenv = require("dotenv");
 // const cors = require('cors');
 // const app = express();
 
-app.use(cors({
-  origin: "http://localhost:3000",  // allow React frontend during development
-  credentials: true                // if you use cookies/auth headers
-}));
+const corsOptions = {
+  origin: ['https://study-notion-app-xi.vercel.app/', 'http://localhost:5173'], // Specify allowed origins (e.g., your frontend URL)
+  credentials: true, // Allow cookies and authentication headers to be sent
+  optionsSuccessStatus: 200, // For preflight requests
+};
 
+app.use(cors(corsOptions));
 // Setting up port number
 const PORT = process.env.PORT || 4000;
 
